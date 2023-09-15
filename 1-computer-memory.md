@@ -1,16 +1,19 @@
 <!-- vscode-markdown-toc -->
 * 1. [Computer Memory](#ComputerMemory)
 * 2. [Data Structures](#DataStructures)
-* 3. [Implementing an Array in Typescript](#ImplementinganArrayinTypescript)
-	* 3.1. [Step 1: Setting Up the Basic Structure](#Step1:SettingUptheBasicStructure)
-	* 3.2. [Step 2: Implementing the `push` Operation](#Step2:ImplementingthepushOperation)
-	* 3.3. [Step 3: Implementing the `pop` Operation](#Step3:ImplementingthepopOperation)
-	* 3.4. [Step 4: Implementing the `shift` Operation](#Step4:ImplementingtheshiftOperation)
-	* 3.5. [Step 5: Implementing the `unshift` Operation](#Step5:ImplementingtheunshiftOperation)
-	* 3.6. [Joining Them Together](#JoiningThemTogether)
-	* 3.7. [1. Define the Node Class](#DefinetheNodeClass)
-	* 3.8. [2. Define the LinkedList Class](#DefinetheLinkedListClass)
-	* 3.9. [3. Test the LinkedList](#TesttheLinkedList)
+* 3. [The Array Data Structure:](#TheArrayDataStructure:)
+* 4. [Implementing an Array in Typescript](#ImplementinganArrayinTypescript)
+	* 4.1. [Step 1: Setting Up the Basic Structure](#Step1:SettingUptheBasicStructure)
+	* 4.2. [Step 2: Implementing the `push` Operation](#Step2:ImplementingthepushOperation)
+	* 4.3. [Step 3: Implementing the `pop` Operation](#Step3:ImplementingthepopOperation)
+	* 4.4. [Step 4: Implementing the `shift` Operation](#Step4:ImplementingtheshiftOperation)
+	* 4.5. [Step 5: Implementing the `unshift` Operation](#Step5:ImplementingtheunshiftOperation)
+	* 4.6. [Joining Them Together](#JoiningThemTogether)
+* 5. [The Linked List Data Structure:](#TheLinkedListDataStructure:)
+* 6. [Implementing Linked Lists in Typescript](#ImplementingLinkedListsinTypescript)
+	* 6.1. [1. Define the Node Class](#DefinetheNodeClass)
+	* 6.2. [2. Define the LinkedList Class](#DefinetheLinkedListClass)
+	* 6.3. [3. Test the LinkedList](#TesttheLinkedList)
 
 <!-- vscode-markdown-toc-config
 	numbering=true
@@ -65,7 +68,7 @@ In our library, every book, document, and note has its content organized in a sp
 In summary, just as the organization and structure of books and notes are vital for efficient research in a library, data structures are crucial in computing. They provide an organized and efficient way to store, manage, and access data, optimizing the interaction between storage, RAM, cache, and CPU registers. Properly chosen data structures, tailored for specific tasks or algorithms, can significantly boost a program's performance and resource efficiency.
 
 
-**The Array Data Structure**:
+##  3. <a name='TheArrayDataStructure:'></a>The Array Data Structure:
 
 An array is a collection of items, typically of the same type, stored at contiguous memory locations. The elements can be accessed randomly by indexing into the array, with the first element at index 0 (for most programming languages).
 
@@ -105,9 +108,9 @@ Imagine a long shelf in our library dedicated to a series of encyclopedias. Each
 
 In programming and computer science, understanding the properties and trade-offs of the array data structure is vital. While arrays provide rapid access and are simple to handle, their static nature can be a limitation in dynamic scenarios. Modern programming languages often provide dynamic array implementations (like Python's list or Java's ArrayList) to offer more flexibility while retaining many of the advantages of traditional arrays.
 
-##  3. <a name='ImplementinganArrayinTypescript'></a>Implementing an Array in Typescript
+##  4. <a name='ImplementinganArrayinTypescript'></a>Implementing an Array in Typescript
 
-###  3.1. <a name='Step1:SettingUptheBasicStructure'></a>Step 1: Setting Up the Basic Structure
+###  4.1. <a name='Step1:SettingUptheBasicStructure'></a>Step 1: Setting Up the Basic Structure
 
 First, we'll define the basic structure of our custom array class. We'll call it `CustomArray`. For simplicity, we will assume our array will only store numbers.
 
@@ -123,7 +126,7 @@ class CustomArray {
 }
 ```
 
-###  3.2. <a name='Step2:ImplementingthepushOperation'></a>Step 2: Implementing the `push` Operation
+###  4.2. <a name='Step2:ImplementingthepushOperation'></a>Step 2: Implementing the `push` Operation
 
 The `push` operation will add an element to the end of the array and increase the length.
 
@@ -135,7 +138,7 @@ public push(item: number): number {
 }
 ```
 
-###  3.3. <a name='Step3:ImplementingthepopOperation'></a>Step 3: Implementing the `pop` Operation
+###  4.3. <a name='Step3:ImplementingthepopOperation'></a>Step 3: Implementing the `pop` Operation
 
 The `pop` operation will remove the last element from the array and decrease the length.
 
@@ -151,7 +154,7 @@ public pop(): number | undefined {
 }
 ```
 
-###  3.4. <a name='Step4:ImplementingtheshiftOperation'></a>Step 4: Implementing the `shift` Operation
+###  4.4. <a name='Step4:ImplementingtheshiftOperation'></a>Step 4: Implementing the `shift` Operation
 
 The `shift` operation will remove the first element from the array, shift the remaining elements, and decrease the length.
 
@@ -171,7 +174,7 @@ public shift(): number | undefined {
 }
 ```
 
-###  3.5. <a name='Step5:ImplementingtheunshiftOperation'></a>Step 5: Implementing the `unshift` Operation
+###  4.5. <a name='Step5:ImplementingtheunshiftOperation'></a>Step 5: Implementing the `unshift` Operation
 
 The `unshift` operation will add an element to the beginning of the array, shift the existing elements, and increase the length.
 
@@ -188,7 +191,7 @@ public unshift(item: number): number {
 }
 ```
 
-###  3.6. <a name='JoiningThemTogether'></a>Joining Them Together
+###  4.6. <a name='JoiningThemTogether'></a>Joining Them Together
 
 Now, let's join these pieces together to get our `CustomArray` class.
 
@@ -247,7 +250,7 @@ class CustomArray {
 
 This `CustomArray` class provides a basic understanding of how arrays operate. However, it's worth noting that real-world array implementations in modern languages are optimized and offer more functionalities.
 
-**The Linked List Data Structure**:
+##  5. <a name='TheLinkedListDataStructure:'></a>The Linked List Data Structure:
 
 A linked list is like a chain of scholarly books, where one book cites another as its primary source of information, leading the reader from one volume to the next in a sequence. This structure represents the linear nature of a linked list, where elements, known as nodes, are interconnected using references or pointers.
 
@@ -287,7 +290,8 @@ Imagine you're in a library researching a particular topic. You start with a sem
 
 In the world of programming and data structures, the choice between arrays, linked lists, or other structures depends on the specific needs and challenges of the task at hand. Using the citation analogy, while linked lists (or citation chains) offer a flexible and evolving understanding of a topic, they come with the trade-off of potentially slower access and increased navigation effort. This kind of understanding helps developers make informed decisions about which data structure to use in different scenarios.
 
-###  3.7. <a name='DefinetheNodeClass'></a>1. Define the Node Class
+##  6. <a name='ImplementingLinkedListsinTypescript'></a>Implementing Linked Lists in Typescript
+###  6.1. <a name='DefinetheNodeClass'></a>1. Define the Node Class
 The building block of a linked list is a "node". Each node contains data and a reference (or link) to the next node in the sequence.
 
 ```typescript
@@ -303,7 +307,7 @@ class ListNode<T> {
 
 **Description**: We've defined a generic `ListNode` class which can store any type `T`. Each node has two properties: its `value` and a reference to the `next` node. By default, `next` is set to `null`.
 
-###  3.8. <a name='DefinetheLinkedListClass'></a>2. Define the LinkedList Class
+###  6.2. <a name='DefinetheLinkedListClass'></a>2. Define the LinkedList Class
 Now, we define the main `LinkedList` class that uses `ListNode`.
 
 ```typescript
@@ -361,7 +365,7 @@ class LinkedList<T> {
 - The `delete` method removes all nodes with a given value.
 - The `print` method displays all the elements in the list.
 
-###  3.9. <a name='TesttheLinkedList'></a>3. Test the LinkedList
+###  6.3. <a name='TesttheLinkedList'></a>3. Test the LinkedList
 
 Let's write a simple test to demonstrate the functionality of the linked list:
 
