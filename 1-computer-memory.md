@@ -8,6 +8,9 @@
 	* 3.4. [Step 4: Implementing the `shift` Operation](#Step4:ImplementingtheshiftOperation)
 	* 3.5. [Step 5: Implementing the `unshift` Operation](#Step5:ImplementingtheunshiftOperation)
 	* 3.6. [Joining Them Together](#JoiningThemTogether)
+	* 3.7. [1. Define the Node Class](#DefinetheNodeClass)
+	* 3.8. [2. Define the LinkedList Class](#DefinetheLinkedListClass)
+	* 3.9. [3. Test the LinkedList](#TesttheLinkedList)
 
 <!-- vscode-markdown-toc-config
 	numbering=true
@@ -284,7 +287,7 @@ Imagine you're in a library researching a particular topic. You start with a sem
 
 In the world of programming and data structures, the choice between arrays, linked lists, or other structures depends on the specific needs and challenges of the task at hand. Using the citation analogy, while linked lists (or citation chains) offer a flexible and evolving understanding of a topic, they come with the trade-off of potentially slower access and increased navigation effort. This kind of understanding helps developers make informed decisions about which data structure to use in different scenarios.
 
-### 1. Define the Node Class
+###  3.7. <a name='DefinetheNodeClass'></a>1. Define the Node Class
 The building block of a linked list is a "node". Each node contains data and a reference (or link) to the next node in the sequence.
 
 ```typescript
@@ -300,7 +303,7 @@ class ListNode<T> {
 
 **Description**: We've defined a generic `ListNode` class which can store any type `T`. Each node has two properties: its `value` and a reference to the `next` node. By default, `next` is set to `null`.
 
-### 2. Define the LinkedList Class
+###  3.8. <a name='DefinetheLinkedListClass'></a>2. Define the LinkedList Class
 Now, we define the main `LinkedList` class that uses `ListNode`.
 
 ```typescript
@@ -358,7 +361,7 @@ class LinkedList<T> {
 - The `delete` method removes all nodes with a given value.
 - The `print` method displays all the elements in the list.
 
-### 3. Test the LinkedList
+###  3.9. <a name='TesttheLinkedList'></a>3. Test the LinkedList
 
 Let's write a simple test to demonstrate the functionality of the linked list:
 
