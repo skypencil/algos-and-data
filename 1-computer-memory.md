@@ -284,6 +284,101 @@ Imagine you're in a library researching a particular topic. You start with a sem
 
 In the world of programming and data structures, the choice between arrays, linked lists, or other structures depends on the specific needs and challenges of the task at hand. Using the citation analogy, while linked lists (or citation chains) offer a flexible and evolving understanding of a topic, they come with the trade-off of potentially slower access and increased navigation effort. This kind of understanding helps developers make informed decisions about which data structure to use in different scenarios.
 
+### 1. Define the Node Class
+The building block of a linked list is a "node". Each node contains data and a reference (or link) to the next node in the sequence.
+
+```typescript
+class ListNode<T> {
+    value: T;
+    next: ListNode<T> | null = null;
+
+    constructor(value: T) {
+        this.value = value;
+    }
+}
+```
+
+**Description**: We've defined a generic `ListNode` class which can store any type `T`. Each node has two properties: its `value` and a reference to the `next` node. By default, `next` is set to `null`.
+
+### 2. Define the LinkedList Class
+Now, we define the main `LinkedList` class that uses `ListNode`.
+
+```typescript
+class LinkedList<T> {
+    head: ListNode<T> | null = null;
+    tail: ListNode<T> | null = null;
+
+    // Append a new node to the end of the list
+    append(value: T) {
+        const newNode = new ListNode(value);
+        if (this.tail) {
+            this.tail.next = newNode;
+            this.tail = newNode;
+        } else {
+            this.head = newNode;
+            this.tail = newNode;
+        }
+    }
+
+    // Delete a node with a specific value
+    delete(value: T) {
+        if (!this.head) return;
+
+        while (this.head && this.head.value === value) {
+            this.head = this.head.next;
+        }
+
+        let current = this.head;
+        while (current && current.next) {
+            if (current.next.value === value) {
+                current.next = current.next.next;
+                if (!current.next) {
+                    this.tail = current;
+                }
+            } else {
+                current = current.next;
+            }
+        }
+    }
+
+    // Print the list's values
+    print() {
+        let current = this.head;
+        while (current) {
+            console.log(current.value);
+            current = current.next;
+        }
+    }
+}
+```
+
+**Description**:
+- We've defined a generic `LinkedList` class. The list has references to its `head` and `tail`.
+- The `append` method adds a new node to the end of the list.
+- The `delete` method removes all nodes with a given value.
+- The `print` method displays all the elements in the list.
+
+### 3. Test the LinkedList
+
+Let's write a simple test to demonstrate the functionality of the linked list:
+
+```typescript
+const list = new LinkedList<number>();
+
+list.append(1);
+list.append(2);
+list.append(3);
+list.append(4);
+list.print(); // Outputs: 1, 2, 3, 4
+
+list.delete(3);
+list.print(); // Outputs: 1, 2, 4
+```
+
+**Description**: We've instantiated a new linked list for numbers, appended four numbers to it, and then removed the number 3 from the list.
+
+That's a basic singly linked list implementation in TypeScript! There are many other methods and enhancements that can be added (like inserting at a specific index, reversing the list, etc.), but this gives you a starting point.
+
 **The Stack Data Structure**:
 
 A stack is a linear data structure that follows the Last In First Out (LIFO) principle. Imagine a stack of plates: the plate that's placed on the top last is the one you'll remove first. Similarly, in a stack, the last element added is the first element to be removed.
