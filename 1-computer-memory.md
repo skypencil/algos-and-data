@@ -10,10 +10,17 @@
 	* 4.5. [Step 5: Implementing the `unshift` Operation](#Step5:ImplementingtheunshiftOperation)
 	* 4.6. [Joining Them Together](#JoiningThemTogether)
 * 5. [The Linked List Data Structure:](#TheLinkedListDataStructure:)
-* 6. [Implementing Linked Lists in Typescript](#ImplementingLinkedListsinTypescript)
+* 6. [ 6. Implementing Singly Linked List in Typescript](#6.ImplementingSinglyLinkedListinTypescript)
 	* 6.1. [1. Define the Node Class](#DefinetheNodeClass)
 	* 6.2. [2. Define the LinkedList Class](#DefinetheLinkedListClass)
 	* 6.3. [3. Test the LinkedList](#TesttheLinkedList)
+* 7. [Implementing Doubly Linked List](#ImplementingDoublyLinkedList)
+	* 7.1. [Modify the Node Class for Doubly Linked List**:](#ModifytheNodeClassforDoublyLinkedList:)
+	* 7.2. [Define the DoublyLinkedList Class:](#DefinetheDoublyLinkedListClass:)
+	* 7.3. [Test the DoublyLinkedList:](#TesttheDoublyLinkedList:)
+* 8. [Implemnting Stack in TypeScript](#ImplemntingStackinTypeScript)
+	* 8.1. [Define the Stack Class](#DefinetheStackClass)
+	* 8.2. [2. Test the Stack with Array](#TesttheStackwithArray)
 
 <!-- vscode-markdown-toc-config
 	numbering=true
@@ -290,7 +297,7 @@ Imagine you're in a library researching a particular topic. You start with a sem
 
 In the world of programming and data structures, the choice between arrays, linked lists, or other structures depends on the specific needs and challenges of the task at hand. Using the citation analogy, while linked lists (or citation chains) offer a flexible and evolving understanding of a topic, they come with the trade-off of potentially slower access and increased navigation effort. This kind of understanding helps developers make informed decisions about which data structure to use in different scenarios.
 
-##  6. <a name='ImplementingLinkedListsinTypescript'></a>Implementing Linked Lists in Typescript
+##  6. <a name='6.ImplementingSinglyLinkedListinTypescript'></a> 6. Implementing Singly Linked List in Typescript 
 ###  6.1. <a name='DefinetheNodeClass'></a>1. Define the Node Class
 The building block of a linked list is a "node". Each node contains data and a reference (or link) to the next node in the sequence.
 
@@ -386,6 +393,121 @@ list.print(); // Outputs: 1, 2, 4
 
 That's a basic singly linked list implementation in TypeScript! There are many other methods and enhancements that can be added (like inserting at a specific index, reversing the list, etc.), but this gives you a starting point.
 
+
+##  7. <a name='ImplementingDoublyLinkedList'></a>Implementing Doubly Linked List 
+
+While a singly linked list only allows traversal in one direction, a doubly linked list has nodes that contain a reference to the next node and the previous node, allowing for bidirectional traversal. This makes certain operations more efficient.
+
+###  7.1. <a name='ModifytheNodeClassforDoublyLinkedList:'></a>Modify the Node Class for Doubly Linked List**:
+
+```typescript
+    class DoublyListNode<T> {
+        value: T;
+        next: DoublyListNode<T> | null = null;
+        prev: DoublyListNode<T> | null = null;
+
+        constructor(value: T) {
+            this.value = value;
+        }
+    }
+```
+
+**Description**: This `DoublyListNode` class is similar to the `ListNode` class but has an additional `prev` property that holds a reference to the previous node in the list.
+
+###  7.2. <a name='DefinetheDoublyLinkedListClass:'></a>Define the DoublyLinkedList Class:
+
+```typescript
+class DoublyLinkedList<T> {
+    head: DoublyListNode<T> | null = null;
+    tail: DoublyListNode<T> | null = null;
+
+    // Append a new node to the end of the list
+    append(value: T) {
+        const newNode = new DoublyListNode(value);
+        if (this.tail) {
+            this.tail.next = newNode;
+            newNode.prev = this.tail;
+            this.tail = newNode;
+        } else {
+            this.head = newNode;
+            this.tail = newNode;
+        }
+    }
+
+    // Delete a node with a specific value
+    delete(value: T) {
+        if (!this.head) return;
+
+        if (this.head.value === value) {
+            this.head = this.head.next;
+            if (this.head) {
+                this.head.prev = null;
+            } else {
+                this.tail = null;
+            }
+            return;
+        }
+
+        let current = this.head;
+        while (current) {
+            if (current.value === value) {
+                if (current.next) {
+                    current.next.prev = current.prev;
+                } else {
+                    this.tail = current.prev;
+                }
+                if (current.prev) {
+                    current.prev.next = current.next;
+                }
+                return;
+            }
+            current = current.next;
+        }
+    }
+
+    // Print the list's values
+    print() {
+        let current = this.head;
+        while (current) {
+            console.log(current.value);
+            current = current.next;
+        }
+    }
+
+    // Print the list's values in reverse
+    printReverse() {
+        let current = this.tail;
+        while (current) {
+            console.log(current.value);
+            current = current.prev;
+        }
+    }
+}
+```
+
+**Description**: This `DoublyLinkedList` class maintains a reference to both the `head` and `tail` of the list. The `append` method has been updated to set the `prev` property of the newly appended node. The `delete` method has also been updated to handle the deletion of nodes from a doubly linked list. The `printReverse` method showcases the ability of the doubly linked list to be traversed in the reverse direction.
+
+###  7.3. <a name='TesttheDoublyLinkedList:'></a>Test the DoublyLinkedList:
+
+```typescript
+const doubleList = new DoublyLinkedList<number>();
+
+doubleList.append(1);
+doubleList.append(2);
+doubleList.append(3);
+doubleList.append(4);
+doubleList.print();        // Outputs: 1, 2, 3, 4
+doubleList.printReverse(); // Outputs: 4, 3, 2, 1
+
+doubleList.delete(3);
+doubleList.print();        // Outputs: 1, 2, 4
+```
+
+**Description**: We've instantiated a new doubly linked list for numbers, appended four numbers to it, showcased the forward and reverse print functionalities, and then removed the number 3 from the list.
+
+The doubly linked list provides more flexibility than the singly linked list at the cost of increased complexity and memory (due to the additional `prev` reference).
+
+
 **The Stack Data Structure**:
 
 A stack is a linear data structure that follows the Last In First Out (LIFO) principle. Imagine a stack of plates: the plate that's placed on the top last is the one you'll remove first. Similarly, in a stack, the last element added is the first element to be removed.
@@ -427,6 +549,78 @@ Consider a pile of books on a table. When you add (or "push") a book, it goes on
 3. **Recursion**: In programming, function calls are often managed using a call stack. When a function is called, its context is pushed onto the stack, and when it returns, its context is popped.
 
 In summary, stacks are a fundamental and versatile data structure in computer science, crucial for numerous algorithms and processes. Understanding the LIFO principle and the basic operations associated with stacks allows developers to effectively harness their power in various applications.
+
+##  8. <a name='ImplemntingStackinTypeScript'></a>Implemnting Stack in TypeScript 
+
+When implemented using arrays, stacks become considerably simpler in terms of structure. In languages with built-in dynamic arrays (like TypeScript's Array type), the stack's push and pop operations map directly to array methods.
+
+###  8.1. <a name='DefinetheStackClass'></a>Define the Stack Class 
+
+Here's how we can implement a stack using TypeScript's array:
+
+```typescript
+class Stack<T> {
+    private items: T[] = [];
+
+    // Add a new item to the top of the stack
+    push(value: T): void {
+        this.items.push(value);
+    }
+
+    // Remove and return the top item from the stack
+    pop(): T | undefined {
+        return this.items.pop();
+    }
+
+    // Return the top item without popping
+    peek(): T | undefined {
+        return this.items[this.items.length - 1];
+    }
+
+    // Check if the stack is empty
+    isEmpty(): boolean {
+        return this.items.length === 0;
+    }
+
+    // Print the stack's values
+    print(): void {
+        for (let i = this.items.length - 1; i >= 0; i--) {
+            console.log(this.items[i]);
+        }
+    }
+}
+```
+
+**Description**:
+- The `Stack` class utilizes an internal array (`items`) to manage its elements.
+- The `push` method directly leverages the array's `push` method.
+- The `pop` method directly uses the array's `pop` method.
+- The `peek` method accesses the last element of the array without removing it.
+- The `isEmpty` method checks if the array is empty.
+- The `print` method displays all the elements in the stack.
+
+###  8.2. <a name='TesttheStackwithArray'></a>2. Test the Stack with Array
+
+Let's demonstrate the functionality of the stack:
+
+```typescript
+const stack = new Stack<number>();
+
+stack.push(1);
+stack.push(2);
+stack.push(3);
+stack.print(); // Outputs: 3, 2, 1
+
+console.log(stack.peek()); // Outputs: 3
+
+console.log(stack.pop());  // Outputs: 3
+stack.print(); // Outputs: 2, 1
+```
+
+**Description**: We've instantiated a new stack for numbers, pushed three numbers onto it, peeked at the top item, popped the top item off, and then printed the remaining items.
+
+This approach provides a concise and effective stack implementation in TypeScript using arrays. The benefits of this method include leveraging the language's built-in array functionalities and reducing the overall complexity.
+
 
 **The Queue Data Structure**:
 
