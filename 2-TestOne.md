@@ -49,7 +49,7 @@ if (browser.getCurrentUrl() === "stackoverflow.com") score+=4;
 browser.forward();
 if (browser.getCurrentUrl() === "stackoverflow.com") score+=2;  // No forward history as it was discarded
 
-console.log(`User scored: ${score} out of 20`);
+console.log(`You scored: ${score} out of 20`);
 ```
 
 ## Question 2 (15 points):
@@ -86,7 +86,7 @@ if (records.getTemperature(10) === null) score+=4;
 if (records.averageLastNDays(5) === 77.4) score+=5;
 if (records.averageLastNDays(10) === null) score+=4;
 
-console.log(`User scored: ${score} out of 15`);
+console.log(`You scored: ${score} out of 15`);
 ```
 
 ## Question 3 (15 points):
@@ -112,7 +112,7 @@ if (isBalanced("{}") === true) score += 2;      // Balanced
 if (isBalanced("[}") === false) score += 2;     // Not Balanced
 if (isBalanced("}}{{") === false) score += 7;     // Not Balanced
 
-console.log(`User scored: ${score} out of 15`);
+console.log(`You scored: ${score} out of 15`);
 ```
 
 ## Question 4 - (15 points):
