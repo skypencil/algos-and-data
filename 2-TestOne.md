@@ -11,7 +11,8 @@ Features:
 3. When the user clicks the "forward" button, if they had previously clicked "back", the browser should navigate to the next website.
 4. If a user visits a new website after clicking "back" (i.e., without clicking "forward" first), the forward history should be discarded.
 
-copy and paste the following tests at the end of your file and make sure they pass:
+copy and paste the following tests at the end of your file and make sure they pass - DO NOT CHANGE THE TESTS - you should be able to read these tests and understand what methods, properties, and classes you need to implement:
+
 
 ```typescript
 // Test
@@ -65,7 +66,7 @@ The system should be able to perform the following operations efficiently:
 
 Design and implement the necessary functionalities for the above system. Ensure that once the year is over and you record temperatures for the new year, the system should overwrite the oldest data.
 
-copy and paste the following tests at the end of your file and make sure they pass:
+copy and paste the following tests at the end of your file and make sure they pass - DO NOT CHANGE THE TESTS - you should be able to read these tests and understand what methods, properties, and classes you need to implement:
 
 ```typescript
 // Test
@@ -98,7 +99,8 @@ Given a string containing just the characters '(', ')', '{', '}', '[', and ']', 
 
 A string is considered balanced if it satisfies the above conditions. Your goal is to determine whether a given string is balanced or not.
 
-copy and paste the following tests at the end of your file and make sure they pass:
+copy and paste the following tests at the end of your file and make sure they pass - DO NOT CHANGE THE TESTS - you should be able to read these tests and understand what methods, properties, and classes you need to implement:
+
 
 ```typescript
 // Test
