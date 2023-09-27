@@ -56,7 +56,7 @@ console.log(`You scored: ${score} out of 20`);
 
 Problem: Yearly Temperature Records
 
-You're developing a system to record and analyze the daily temperatures for an entire year. Since there are 365365 days in a typical year, the system should be able to accommodate all these records without needing to expand its storage after initialization.
+You're developing a system to record and analyze the daily temperatures for an entire year. Since there are 365 days in a typical year, the system should be able to accommodate all these records without needing to expand its storage after initialization.
 
 The system should be able to perform the following operations efficiently:
 
